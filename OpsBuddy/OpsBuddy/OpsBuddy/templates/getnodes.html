@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>{{ title }}.</h2>
+
+</hr>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+
+            <fieldset class="form-group">
+                <div class="form-group">
+                    {% if form.username.errors %}
+                    {{ form.username(class="form-control col-sm-5 is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.username(class="form-control col-sm-5") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        {% if username%}
+        <h2>Results for {{username}}</h2>
+
+        {% if nodedata %}
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Server Name</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for node in nodedata %}
+                <tr>
+                    <td>{{ node.servername }}</td>
+                    <td>{{ node.datetime }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% endif %}
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock content %}

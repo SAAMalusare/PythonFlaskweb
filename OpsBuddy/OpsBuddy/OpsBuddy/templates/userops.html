@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Get RMS Archive Data</h2>
+        <p>Shows when user was processed via RMS system </p>
+        <p><a class="btn btn-default" href="{{ url_for('getrms') }}">Get Details &raquo;</a></p>
+    </div>
+
+    <div class="col-md-4">
+        <h2>Get Last accessed Server details</h2>
+        <p>Get user's last 5 accessed server nodes.</p>
+        <p><a class="btn btn-default" href="{{ url_for('getnodes') }}">Get Nodes &raquo;</a></p>
+    </div>
+
+    <div class="col-md-4">
+        <h2>Get User mapping</h2>
+        <p>Check if User's account mapping exists with AD.</p>
+        <p><a class="btn btn-default" href="{{ url_for('getusermap') }}">Get Mapping &raquo;</a></p>
+    </div>
+</div>
+
+    {% endblock %}
